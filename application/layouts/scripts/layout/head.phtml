@@ -1,8 +1,9 @@
 <head>
 	<?php echo $this->headTitle('titulo'); ?>
 	<?php echo $this->headMeta(); ?>
-
-	<?php /* # Rever
+	<?php 
+		$_path_include =  Zend_Registry::get('path_include');
+	/* # Rever
 	<meta name="Author" content="Apple Inc." />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta property="og:image" content="/v/home/bq/images/og.jpg?201506300850" />
@@ -14,16 +15,17 @@
 	<meta name="robots" content="INDEX,FOLLOW" />
 	*/
 	?>
-
   <?php //$this->headLink()->appendStylesheet('caminho', 'screen'); ?>
   <?php //$this->headLink()->appendStylesheet('caminho', 'screen', 'IE 7' ); ?>
-  <?php $this->headLink()->appendStylesheet($this->baseUrl('application/layouts/frontend/layout/css/bootstrap.min.css'), 'screen'); ?>
-  <?php $this->headLink()->appendStylesheet($this->baseUrl('application/layouts/frontend/layout/css/bootstrap-theme.min.css'), 'screen'); ?>
+
+  <?php $this->headLink()->appendStylesheet($this->baseUrl($_path_include.'layout/css/bootstrap.min.css'), 'screen'); ?>
+  <?php $this->headLink()->appendStylesheet($this->baseUrl($_path_include.'layout/css/bootstrap-theme.min.css'), 'screen'); ?>
+  <?php $this->headLink()->appendStylesheet($this->baseUrl($_path_include.'layout/css/styles.css'), 'screen'); ?>
   <?php echo $this->headLink(); ?>
 
-	<?php //$this->headScript()->appendFile('caminho') ?>
-	<?php //$this->headScript()->appendFile('caminho', 'text/javascript', array('conditional' => 'lt IE 9')) ?>
-  <?php $this->headScript()->appendFile($this->baseUrl('layouts/frontend/layout/js/bootstrap.min.js')) ?>
-	<?php echo $this->headScript(); ?>
-
+  <?php //$this->headScript()->appendFile('caminho') ?>
+  <?php //$this->headScript()->appendFile('caminho', 'text/javascript', array('conditional' => 'lt IE 9')) ?>
+  <?php $this->headScript()->appendFile($this->baseUrl($_path_include.'layout/js/jquery-2.1.4.min.js')) ?>
+  <?php $this->headScript()->appendFile($this->baseUrl($_path_include.'layout/js/bootstrap.min.js')) ?>
+  <?php echo $this->headScript(); ?> 
 </head>

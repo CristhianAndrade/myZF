@@ -1,33 +1,19 @@
-RewriteEngine On
-
-
-
-RewriteRule ^\.htaccess$ - [F]
-
-
-
-RewriteCond %{REQUEST_URI} =""
-
-
-
-RewriteRule ^.*$ /public/index.php [NC,L]
-
-
-
-RewriteCond %{REQUEST_URI} !^/tickets/public/.*$
-
-
-
+# Turn on rewrites.
+RewriteEngine on
+ 
+# Only apply to URLs on this domain
+#RewriteCond %{HTTP_HOST} ^(www.)?domain.com$
+ 
+# Only apply to URLs that aren't already under folder.
+RewriteCond %{REQUEST_URI} !^/tickets/public/
+ 
+# Don't apply to URLs that go to existing files or folders.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+ 
+# Rewrite all those to insert /folder.
 RewriteRule ^(.*)$ /tickets/public/$1
-
-
-
-RewriteCond %{REQUEST_FILENAME} -f
-
-
-
-RewriteRule ^.*$ - [NC,L]
-
-
-
-RewriteRule ^public/.*$ /tickets/public/index.php [NC,L]
+ 
+# Also redirect the root folder.
+#RewriteCond %{HTTP_HOST} ^(www.)?domain.com$
+RewriteRule ^(/)?$ tickets/public/index.php [L]
